@@ -4,6 +4,7 @@ const app = express();
 
 require('dotenv').config()
 require('./startup/config')()
+require('./startup/prod')(app)
 
 
 require('./startup/db')()
