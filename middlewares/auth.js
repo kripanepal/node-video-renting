@@ -4,6 +4,7 @@ const config = require('config')
 module.exports = (req, res, next) => {
     {
         const token = req.header('x-auth-token');
+
         if (!token) return res.status(401).send("No authorization token")
 
         try {
@@ -11,8 +12,8 @@ module.exports = (req, res, next) => {
             req.user = decoded
             next()
         } catch (error) {
-
-            return res.status(401).send("Bad request")
+            console.log(error)
+            return res.status(400).send("Bad request")
 
         }
 
